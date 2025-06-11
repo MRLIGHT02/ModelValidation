@@ -11,7 +11,7 @@ namespace ModelValidation.Controllers
         {
             if (!ModelState.IsValid)
             {
-                List<string> errorlist = new List<string>();
+                List<string> errorlist = new();
 
                 //foreach(var val in ModelState.Values)
                 //{

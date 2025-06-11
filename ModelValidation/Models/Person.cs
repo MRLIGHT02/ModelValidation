@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace ModelValidation.Models
 {
@@ -7,6 +8,8 @@ namespace ModelValidation.Models
         [Required]
         public string? PersonName { get; set; }
         [Required]
+        [EmailAddress(ErrorMessage = "invalid Email")]
+        [TempData]
         public string? Email { get; set; }
         public long? Phone { get; set; }
         public string? Password { get; set; }
