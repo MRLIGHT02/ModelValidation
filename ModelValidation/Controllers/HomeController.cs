@@ -13,14 +13,16 @@ namespace ModelValidation.Controllers
             {
                 List<string> errorlist = new List<string>();
 
-                foreach(var val in ModelState.Values)
-                {
-                    foreach(var err in val.Errors)
-                    {
-                        errorlist.Add(err.ErrorMessage);
-                    }
-                }
-                string errors = string.Join("\n", errorlist);
+                //foreach(var val in ModelState.Values)
+                //{
+                //    foreach(var err in val.Errors)
+                //    {
+                //        errorlist.Add(err.ErrorMessage);
+                //    }
+                //}
+                //string errors = string.Join("\n", errorlist);
+
+                string errors = string.Join("\n", ModelState.Values.SelectMany(value => value.Errors).Select(err => err.ErrorMessage));
                 return BadRequest(errors);
             }
             return Content($"{person}");
