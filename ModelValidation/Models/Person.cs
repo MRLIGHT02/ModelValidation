@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace ModelValidation.Models
@@ -12,7 +13,9 @@ namespace ModelValidation.Models
         [TempData]
         public string? Email { get; set; }
         public long? Phone { get; set; }
+        [PasswordPropertyText]
         public string? Password { get; set; }
+        [PasswordPropertyText]
         public string? ConfirmPassword { get; set; }
         [Required]
         public double? Price { get; set; }
