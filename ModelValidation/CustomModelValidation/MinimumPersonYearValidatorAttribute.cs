@@ -4,9 +4,24 @@ namespace ModelValidation.CustomModelValidation
 {
     public class MinimumPersonYearValidatorAttribute : ValidationAttribute
     {
-        public override ValidationResult? IsValid(object? value, ValidationContext validationcontext)
+        protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
         {
-            return new ValidationResult("message");
+            if (value != null)
+            {
+                DateTime date = (DateTime)value;
+                if (date.Year >= 2004)
+                {
+                    return new ValidationResult("Invalid Date");
+                }
+                else
+                {
+                    return ValidationResult.Success;
+                }
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
