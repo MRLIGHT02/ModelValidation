@@ -4,9 +4,9 @@ namespace ModelValidation.CustomModelValidation
 {
     public class MCustomValidation : ValidationAttribute
     {
-        public override ValidationResult? IsValid(object? value, ValidationContext validationcontext)
+        public override ValidationResult? IsValid(object? value, ValidationContext validationcontext):base.IsValid(value);
         {
-            return base.IsValid(value);
+
         }
-    }
+}
 }
