@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ModelValidation.CustomModelValidation;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -20,10 +21,12 @@ namespace ModelValidation.Models
         [Required]
         public double? Price { get; set; }
 
+        [MinimumPersonYearValidator]
+        public DateTime? DateOfBirth { get; set; }
 
         public override string ToString()
         {
-            return $"Name: {this.PersonName} Email: {this.Email} Phone: {this.Phone} Passowrd: {Password} Conform:{this.ConfirmPassword} Price: {this.Price}";
+            return $"Name: {this.PersonName} Email: {this.Email} Phone: {this.Phone} Passowrd: {Password} Conform:{this.ConfirmPassword} Price: {this.Price} DateOfBirth: {this.DateOfBirth}";
         }
     }
 }

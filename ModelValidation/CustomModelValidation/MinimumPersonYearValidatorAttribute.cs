@@ -11,10 +11,11 @@ namespace ModelValidation.CustomModelValidation
                 DateTime date = (DateTime)value;
                 if (date.Year >= 2004)
                 {
-                    return new ValidationResult("Invalid Date");
+                    return new ValidationResult("Invalid Date,Date Must Be Greater Than 2004");
                 }
                 else
                 {
+                    date.GetDateTimeFormats();
                     return ValidationResult.Success;
                 }
             }
