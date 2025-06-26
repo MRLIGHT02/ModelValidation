@@ -23,9 +23,9 @@ namespace ModelValidation.Models
 
         [MinimumPersonYearValidator(2000, ErrorMessage = "Age must be less than {0}")]
         public DateTime? DateOfBirth { get; set; }
-        [DateRangeValidator]
+        [DateRangeValidator("FromDate", ErrorMessage = "'From Date' should be older than or equal to 'To Date'")]
         public DateTime? FromDate { get; set; }
-        [DateRangeValidator]
+
         public DateTime? ToDate { get; set; }
 
         public override string ToString()
