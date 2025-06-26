@@ -21,8 +21,12 @@ namespace ModelValidation.Models
         [Required]
         public double? Price { get; set; }
 
-        [MinimumPersonYearValidator]
+        [MinimumPersonYearValidator(2000, ErrorMessage = "Age must be less than {0}")]
         public DateTime? DateOfBirth { get; set; }
+        [DateRangeValidator]
+        public DateTime? FromDate { get; set; }
+        [DateRangeValidator]
+        public DateTime? ToDate { get; set; }
 
         public override string ToString()
         {

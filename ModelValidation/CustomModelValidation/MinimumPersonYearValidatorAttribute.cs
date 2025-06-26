@@ -4,14 +4,24 @@ namespace ModelValidation.CustomModelValidation
 {
     public class MinimumPersonYearValidatorAttribute : ValidationAttribute
     {
+        public int MinimumYear { get; set; }
+        public string DefaultErrorMessage { get; set; } = "Year Should Be Less than {0}";
+        public MinimumPersonYearValidatorAttribute()
+        {
+
+        }
+        public MinimumPersonYearValidatorAttribute(int minimumYear)
+        {
+            MinimumYear = minimumYear;
+        }
         protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
         {
             if (value != null)
             {
                 DateTime date = (DateTime)value;
-                if (date.Year >= 2004)
+                if (date.Year >= MinimumYear)
                 {
-                    return new ValidationResult("Invalid Date,Date Must Be Greater Than 2004");
+                    return new ValidationResult(string.Format(ErrorMessage??DefaultErrorMessage,MinimumYear));
                 }
                 else
                 {
