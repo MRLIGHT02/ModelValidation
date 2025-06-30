@@ -7,7 +7,8 @@ namespace ModelValidation.Controllers
     public class HomeController : Controller
     {
         [Route("register")]
-        public IActionResult Index(Person person)
+        //[Bind(nameof(Person.Age))]
+        public IActionResult Index([FromBody] Person person)
         {
             if (!ModelState.IsValid)
             {
