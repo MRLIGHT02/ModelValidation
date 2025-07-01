@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using ModelValidation.Models;
+using ModelValidation.CustomModelBinder;
 
 namespace ModelValidation.Controllers
 {
@@ -8,6 +9,7 @@ namespace ModelValidation.Controllers
     {
         [Route("register")]
         //[Bind(nameof(Person.Age))]
+        // [ModelBinder(binderType: typeof(PersonModelBinder))] 
         public IActionResult Index([FromBody] Person person)
         {
             if (!ModelState.IsValid)
